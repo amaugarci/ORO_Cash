@@ -1,10 +1,8 @@
 import React from 'react'
-import { StyleSheet } from 'react-native'
-import { Button as PaperButton } from 'react-native-paper'
-import { View, Image, Text } from 'react-native-web'
+import { StyleSheet, View, Image, Text } from 'react-native'
 import { theme } from '../core/theme'
 
-export default function HomeCard({item}) {
+export default function HomeCard({ item }) {
   return (
     <View style={styles.container}>
       <View style={styles.row}>
@@ -20,7 +18,10 @@ export default function HomeCard({item}) {
           </View>
         </View>
         <Text style={styles.money}>
-          ${item.money}
+          {item.type === "internal" ? item.money > 0 ? "Received" : "Sent" : item.money > 0 ? "Deposit" : "Withdraw"}
+        </Text>
+        <Text style={styles.money}>
+          ${Math.abs(item.money)}
         </Text>
       </View>
       <View style={styles.underline}></View>
@@ -29,51 +30,51 @@ export default function HomeCard({item}) {
 }
 
 const styles = StyleSheet.create({
-  container:{
-    marginVertical:5,
+  container: {
+    marginVertical: 5,
   },
-  avatar:{
-    width:50,
-    height:50,
-    borderRadius:'50%'
- },
- row:{
-  marginVertical:10,
-  display:'flex',
-  flexDirection:'row',
-  justifyContent:'space-between',
-  alignItems:'center'
- },
- avatergroup:{
-  display:'flex',
-  flexDirection:'row',
-  justifyContent:'center',
-  alignItems:'center'
- },
- dategroup:{
-  display:'flex',
-  flexDirection:'column',
-  marginLeft:15,
- },
- name:{
-  color:theme.colors.blackColor,
-  fontSize:theme.fontSize.content0,
-  fontWeight:theme.fontWeight.normal
- },
- date:{
-  color:theme.colors.lightgreytextColor,
-  fontSize:theme.fontSize.content,
-  fontWeight:theme.fontWeight.normal
- },
- money:{
-  color:theme.colors.lightgreytextColor,
-  fontSize:theme.fontSize.content0,
-  fontWeight:theme.fontWeight.normal
- },
- underline:{
-  marginTop:5,
-  marginLeft:60,
-  backgroundColor:theme.colors.underlineColor,
-  height:1,
- }
+  avatar: {
+    width: 50,
+    height: 50,
+    borderRadius: 50
+  },
+  row: {
+    marginVertical: 10,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  avatergroup: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  dategroup: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginLeft: 15,
+  },
+  name: {
+    color: theme.colors.whiteColor,
+    fontSize: theme.fontSize.content0,
+    fontWeight: theme.fontWeight.normal
+  },
+  date: {
+    color: theme.colors.lightgreytextColor,
+    fontSize: theme.fontSize.content,
+    fontWeight: theme.fontWeight.normal
+  },
+  money: {
+    color: theme.colors.whiteColor,
+    fontSize: theme.fontSize.content0,
+    fontWeight: theme.fontWeight.normal
+  },
+  underline: {
+    marginTop: 5,
+    marginLeft: 60,
+    backgroundColor: theme.colors.underlineColor,
+    height: 1,
+  }
 })

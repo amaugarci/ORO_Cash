@@ -3,24 +3,39 @@ export class User {
 
   constructor(
     id,
+    contactId,
     email,
     authToken,
-    refreshToken,
+    username,
+    midvalue,
+    midprice,
+    cash_num,
+    accountId,
     permission
   ) {
-    this.id = id
-    this.email = email
-    this.authToken = authToken
-    this.refreshToken = refreshToken,
-    this.permission=permission
+    this.id = id,
+      this.contactId = contactId,
+      this.email = email,
+      this.authToken = authToken,
+      this.midvalue = midvalue,
+      this.midprice = midprice,
+      this.username = username,
+      this.cash_num = cash_num,
+      this.accountId=accountId,
+      this.permission = permission
   }
 
   static fromJson(loginResponse, email) {
     return new User(
-      loginResponse.userId,
+      loginResponse.id,
+      loginResponse.contactId,
       email,
       loginResponse.authToken,
-      loginResponse.refreshToken,
+      loginResponse.username,
+      loginResponse.midvalue,
+      loginResponse.midprice,
+      loginResponse.cash_num,
+      loginResponse.accountId,
       loginResponse.permission
     )
   }
